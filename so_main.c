@@ -6,7 +6,7 @@
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 19:55:17 by jperales          #+#    #+#             */
-/*   Updated: 2021/12/15 19:32:44 by jperales         ###   ########.fr       */
+/*   Updated: 2021/12/23 21:03:53 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 #include "so_long.h"
 #include <stdio.h>
 
-
-void	ft_readmap(char **argv, s_grid *mapcoord)
+void	ft_readmap(char **argv, t_grid *mapcoord)
 {
 	int		i;
 	int		j;
@@ -33,37 +32,44 @@ void	ft_readmap(char **argv, s_grid *mapcoord)
 		printf("Error.\nThe map can´t be readed.");
 		exit (1);
 	}
-
 	buffer = get_map(fd);
-	while (buffer[j++])
+	while (buffer[j])
 	{
 		if (buffer[j] == '\n')
 			mapcoord->map_row++;
+		if (buffer[j] == 'C')
+			mapcoord->coins++;
+		if (buffer[j] == 'E')
+			mapcoord->exits++;
+		if (buffer[j] == 'P')
+			mapcoord->players++;
+		j++;
+	}
+	if (mapcoord->exits != 1 || mapcoord->players != 1 || mapcoord->coins < 1)
+	{
+		printf("Error.");
+		printf("The number of Players Coins or Exits aren´t right.\n");
+		exit(1);
 	}
 	mapcoord->map = ft_split(buffer, '\n');
-	while (mapcoord->map[0][i++] != '\0')
-		mapcoord->map_col++;
-	printf("columnas = %d\n", mapcoord->map_col);
-	printf("filas  = %d\n", mapcoord->map_row);
-/*	i = 0;
-	j = 0;
-	while (map[i][j])
+	while (mapcoord->map[0][i] != '\0')
 	{
-		while (map[i][j] != '\0')
-		{
-			write(1, &map[i][j], 1);
-			j++;
-		}
-		write(1, "\n", 1);
+		mapcoord->map_col++;
 		i++;
-		j = 0;
-	}*/
+	}
+	mapcoord->map_tot = ft_strlen(buffer) - mapcoord->map_row;
+	if (mapcoord->map_tot != mapcoord->map_col * mapcoord->map_row)
+	{
+		printf("Error.\n");
+		printf("The Map is´nt correct, is´nt a rectangle.\n");
+		exit (1);
+	}
 	close(fd);
 }
 
 int	main(int argc, char **argv)
 {
-	s_grid	mapcoord;
+	t_grid	mapcoord;
 
 	if (argc < 2)
 	{
@@ -93,9 +99,12 @@ int	main(int argc, char **argv)
 		exit (1);
 	}
 	ft_readmap(argv, &mapcoord);
+	ft_check_wall(&mapcoord);
 	ft_create_window(&mapcoord);
+	mapcoord.player_dir = "./images/Santafront.xpm";
 	ft_fill_window(&mapcoord);
-	
+	mlx_hook(mapcoord.mlx_win, 2, 1L << 0, ft_pressed_key, &mapcoord);
+	mlx_hook(mapcoord.mlx_win, 17, 1L << 5, ft_close_window, &mapcoord);
 	mlx_loop(mapcoord.mlx);
 	return (0);
 }

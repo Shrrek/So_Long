@@ -6,7 +6,7 @@
 #    By: jperales <jperales@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/26 18:10:33 by jperales          #+#    #+#              #
-#    Updated: 2021/12/15 16:22:58 by jperales         ###   ########.fr        #
+#    Updated: 2021/12/20 18:59:42 by jperales         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ MLX = mlx/
 SRC = 	so_main.c\
 		ft_create_window.c\
 		ft_fill_window.c\
-		
-		
+		ft_check_wall.c\
+		ft_pressed_key.c\
+		ft_player_move.c
 
 OBJS = $(SRC:.c=.o)
 

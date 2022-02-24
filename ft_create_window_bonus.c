@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_window.c                                 :+:      :+:    :+:   */
+/*   ft_create_window_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 20:45:18 by jperales          #+#    #+#             */
-/*   Updated: 2022/01/10 15:55:05 by jperales         ###   ########.fr       */
+/*   Created: 2022/02/22 10:22:06 by jperales          #+#    #+#             */
+/*   Updated: 2022/02/22 10:22:32 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ void	ft_create_window(t_grid *var)
 	var->mlx = mlx_init();
 	var->mlx_win = mlx_new_window(var->mlx,
 			var->pixel * var->map_col,
-			var->pixel * var->map_row, "So_long@QUINO");
+			var->pixel * var->map_row, "So_long_Bonus@QUINO");
 }

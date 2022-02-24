@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_window.c                                   :+:      :+:    :+:   */
+/*   ft_fill_window_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 16:03:15 by jperales          #+#    #+#             */
-/*   Updated: 2022/02/22 11:05:54 by jperales         ###   ########.fr       */
+/*   Created: 2022/02/22 11:19:06 by jperales          #+#    #+#             */
+/*   Updated: 2022/02/22 11:19:11 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ void	ft_fill_window(t_grid *var)
 		}
 		var->map_y++;
 	}
-	printf("Movements: %d\n", var->player_movements);
+	ft_movements(var);
 }

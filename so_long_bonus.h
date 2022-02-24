@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/26 19:46:13 by jperales          #+#    #+#             */
-/*   Updated: 2022/02/23 14:29:06 by jperales         ###   ########.fr       */
+/*   Created: 2022/02/22 09:45:28 by jperales          #+#    #+#             */
+/*   Updated: 2022/02/22 09:47:18 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "./libft/libft.h"
 # include <mlx.h>
@@ -38,7 +38,6 @@ typedef struct grid
 }	t_grid;
 
 char	*get_map(int fd);
-char	*get_next_line(int fd);
 void	ft_create_window(t_grid *var);
 void	ft_fill_window(t_grid *var);
 void	ft_check_wall(t_grid *var);
@@ -52,6 +51,5 @@ void	ft_movements(t_grid *var);
 void	ft_all_grass(t_grid *var);
 void	ft_initial(t_grid *var);
 void	ft_fill_grass(t_grid *var);
-void	init_struct(t_grid *var);
 
 #endif

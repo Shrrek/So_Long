@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_main.c                                          :+:      :+:    :+:   */
+/*   so_main_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 19:55:17 by jperales          #+#    #+#             */
-/*   Updated: 2022/02/23 14:34:39 by jperales         ###   ########.fr       */
+/*   Created: 2022/02/22 11:26:40 by jperales          #+#    #+#             */
+/*   Updated: 2022/02/22 12:05:40 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include <stdio.h>
 
 void	ft_check_pce(char *buffer, t_grid *var)
@@ -98,7 +98,6 @@ int	main(int argc, char **argv)
 {
 	t_grid	var;
 
-	init_struct(&var);
 	ft_check_arguments(argc);
 	if (argv[1] == 0)
 	{
@@ -118,6 +117,5 @@ int	main(int argc, char **argv)
 	mlx_hook(var.mlx_win, 2, 1L << 0, ft_pressed_key, &var);
 	mlx_hook(var.mlx_win, 17, 1L << 5, ft_close_window, &var);
 	mlx_loop(var.mlx);
-	exit(0);
 	return (0);
 }
